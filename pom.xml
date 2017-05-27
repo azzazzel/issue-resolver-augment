@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>issue</groupId>
+	<artifactId>resolver_augment</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<plugin>
+
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-export-maven-plugin</artifactId>
+				<version>3.4.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>export</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+
+				<configuration>
+					<failOnChanges>false</failOnChanges>
+					<resolve>true</resolve>
+					<bundlesOnly>true</bundlesOnly>
+					<bndruns>
+						<bndrun>test.bndrun</bndrun>
+					</bndruns>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+
+</project>

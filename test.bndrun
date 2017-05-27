@@ -1,0 +1,25 @@
+-standalone:
+		
+-plugin.repo: \
+   aQute.bnd.deployer.repository.LocalIndexedRepo; \
+      name     =    demo.fantastic.repo; \
+      pretty   =    true ; \
+      local    =    ${.}		
+		
+-runfw: org.eclipse.osgi;version='[3.10.100.v20150529-1857,3.10.100.v20150529-1857]'
+-runee: JavaSE-1.8
+
+-runrequires: osgi.contract;filter:='(&(osgi.contract=JavaJAXRS)(whiteboard=true))'
+
+-resolve.effective: resolve, assemble
+
+-augment.javax.ws.rs-api: \
+	javax.ws.rs-api; \
+		requirement:="compile.only"
+
+-augment.com.eclipsesource.jaxrs.publisher: \
+	com.eclipsesource.jaxrs.publisher; \
+		capability:="osgi.contract;\
+			osgi.contract=JavaJAXRS;\
+			whiteboard=true \
+		"
